@@ -1,0 +1,99 @@
+{% extends "generic/base.html" %}
+
+{% block title %}
+    {{ action }} a Question
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+        <p>
+            {{ form.hidden_tag() }}
+            <div class="columns">
+                <div class="column">
+                    {{ form.content_japanese.label(class_="label") }} {{ form.content_japanese(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_japanese.label(class_="label") }} {{ form.choice1_japanese(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_japanese.label(class_="label") }} {{ form.choice2_japanese(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_english.label(class_="label") }} {{ form.content_english(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_english.label(class_="label") }} {{ form.choice1_english(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_english.label(class_="label") }} {{ form.choice2_english(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_german.label(class_="label") }} {{ form.content_german(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_german.label(class_="label") }} {{ form.choice1_german(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_german.label(class_="label") }} {{ form.choice2_german(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_french.label(class_="label") }} {{ form.content_french(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_french.label(class_="label") }} {{ form.choice1_french(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_french.label(class_="label") }} {{ form.choice2_french(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_spanish.label(class_="label") }} {{ form.content_spanish(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_spanish.label(class_="label") }} {{ form.choice1_spanish(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_spanish.label(class_="label") }} {{ form.choice2_spanish(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_italian.label(class_="label") }} {{ form.content_italian(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_italian.label(class_="label") }} {{ form.choice1_italian(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_italian.label(class_="label") }} {{ form.choice2_italian(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_dutch.label(class_="label") }} {{ form.content_dutch(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_dutch.label(class_="label") }} {{ form.choice1_dutch(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_dutch.label(class_="label") }} {{ form.choice2_dutch(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_portuguese.label(class_="label") }} {{ form.content_portuguese(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_portuguese.label(class_="label") }} {{ form.choice1_portuguese(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_portuguese.label(class_="label") }} {{ form.choice2_portuguese(class_="input") }}
+                </div>
+                <div class="column">
+                    {{ form.content_french_canada.label(class_="label") }} {{ form.content_french_canada(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice1_french_canada.label(class_="label") }} {{ form.choice1_french_canada(class_="input") }}
+                    <br>
+                    <br>
+                    {{ form.choice2_french_canada.label(class_="label") }} {{ form.choice2_french_canada(class_="input") }}
+                </div>
+            </div>
+            {{ form.worldwide.label }}: {{ form.worldwide(class_="block") }}
+        </p>
+        <br>
+        <p>{{ form.submit(class_="button is-success") }}</p>
+    </form>
+{% endblock %}
