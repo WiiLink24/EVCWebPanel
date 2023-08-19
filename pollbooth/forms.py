@@ -72,7 +72,7 @@ class QuestionForm(FlaskForm):
     choice2_portuguese = StringField("Portuguese Choice 2", validators=[DataRequired()])
     choice2_french_canada = StringField("French Canadian Choice 2", validators=[DataRequired()])
     worldwide = BooleanField("Worldwide Question")
-    start_time = IntegerField("Start Time", validators=[DataRequired()])
+    start_date = IntegerField("Start Date", validators=[DataRequired()])
     submit = SubmitField("Add")
 
 

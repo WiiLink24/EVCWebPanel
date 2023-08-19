@@ -61,8 +61,8 @@ def add_question():
             choice2_portuguese=form.choice2_portuguese.data,
             choice2_french_canada=form.choice2_french_canada.data,
             worldwide=form.worldwide.data,
-            start_date=form.start_time.data,
-            end_date=form.start_time.data + 604800
+            start_date=form.start_date.data,
+            end_date=form.start_date.data + 604800
         )
 
         if new_question.worldwide:
