@@ -14,7 +14,7 @@ def list_questions():
     page_num = request.args.get("page", default=1, type=int)
 
     questions = Questions.query.order_by(Questions.question_id.asc()).paginate(
-        page=page_num, per_page=10, error_out=False
+        page=page_num, per_page=100, error_out=False
     )
 
     return render_template(
