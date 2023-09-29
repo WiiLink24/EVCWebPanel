@@ -23,7 +23,7 @@ def list_questions():
         type_length=questions.total,
         # 4 questions can be active at a time, however inactive questions must exist for results.
         # TODO: Find good number for this dilemma
-        type_max_count=10,
+        type_max_count=100,
     )
 
 
