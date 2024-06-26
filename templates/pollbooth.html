@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="title">Welcome, {{ current_user.username }}.</h1>
+    <h1 class="title">Welcome, {{ g.oidc_user.profile.name }}.</h1>
     <h2 class="subtitle">Click on an operation below to get started:</h2>
     <p class="buttons" style="display: block">
-        <a href="{{ url_for('change_password') }}">
-            <button class="button is-link">Change Password</button>
+        <a href="{{ url_for('list_questions') }}">
+            <button class="button is-link">Manage Questions</button>
         </a>
         <br/>
         <br/>

@@ -1,15 +1,15 @@
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required
 from werkzeug import exceptions
 
 from models import Questions, db
 from pollbooth.forms import QuestionForm
 from app import app
 from pollbooth.operations import manage_delete_item
+from pollbooth.admin import oidc
 
 
 @app.route("/thepollbooth/questions")
-@login_required
+@oidc.require_login
 def list_questions():
     page_num = request.args.get("page", default=1, type=int)
 
@@ -28,7 +28,7 @@ def list_questions():
 
 
 @app.route("/thepollbooth/questions/add", methods=["GET", "POST"])
-@login_required
+@oidc.require_login
 def add_question():
     form = QuestionForm()
     if form.validate_on_submit():
@@ -68,7 +68,7 @@ def add_question():
             choice2_russian=form.choice2_russian.data,
             worldwide=form.worldwide.data,
             start_date=form.start_date.data,
-            end_date=form.start_date.data + 604800
+            end_date=form.start_date.data + 604800,
         )
 
         if new_question.worldwide:
@@ -83,13 +83,13 @@ def add_question():
 
 
 @app.route("/thepollbooth/questions/<question_id>/edit")
-@login_required
+@oidc.require_login
 def edit_question(question_id: int):
     pass
 
 
 @app.route("/thepollbooth//<question_id>/remove", methods=["GET", "POST"])
-@login_required
+@oidc.require_login
 def remove_question(question_id: int):
     def drop_question():
         db.session.delete(current_question)
