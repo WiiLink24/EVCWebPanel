@@ -7,6 +7,7 @@ from app import app
 from pollbooth.operations import manage_delete_item
 from pollbooth.admin import oidc
 
+
 @app.route("/thepollbooth/questions")
 @oidc.require_login
 def list_questions():
@@ -67,7 +68,7 @@ def add_question():
             choice2_russian=form.choice2_russian.data,
             worldwide=form.worldwide.data,
             start_date=form.start_date.data,
-            end_date=form.start_date.data + 604800
+            end_date=form.start_date.data + 604800,
         )
 
         if new_question.worldwide:

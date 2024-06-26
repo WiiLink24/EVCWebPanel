@@ -1,11 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import (
-    StringField,
-    SubmitField,
-    BooleanField,
-    IntegerField
-)
+from wtforms import StringField, SubmitField, BooleanField, IntegerField
 from wtforms.validators import DataRequired, ValidationError
+
 
 class QuestionForm(FlaskForm):
     content_japanese = StringField("Japanese Question", validators=[DataRequired()])
@@ -18,7 +14,9 @@ class QuestionForm(FlaskForm):
     content_portuguese = StringField("Portuguese Question", validators=[DataRequired()])
     content_catalan = StringField("Catalan Question", validators=[DataRequired()])
     content_russian = StringField("Russian Question", validators=[DataRequired()])
-    content_french_canada = StringField("French Canadian Question", validators=[DataRequired()])
+    content_french_canada = StringField(
+        "French Canadian Question", validators=[DataRequired()]
+    )
     choice1_japanese = StringField("Japanese Choice 1", validators=[DataRequired()])
     choice1_english = StringField("English Choice 1", validators=[DataRequired()])
     choice1_german = StringField("German Choice 1", validators=[DataRequired()])
@@ -27,7 +25,9 @@ class QuestionForm(FlaskForm):
     choice1_italian = StringField("Italian Choice 1", validators=[DataRequired()])
     choice1_dutch = StringField("Dutch Choice 1", validators=[DataRequired()])
     choice1_portuguese = StringField("Portuguese Choice 1", validators=[DataRequired()])
-    choice1_french_canada = StringField("French Canadian Choice 1", validators=[DataRequired()])
+    choice1_french_canada = StringField(
+        "French Canadian Choice 1", validators=[DataRequired()]
+    )
     choice1_catalan = StringField("Catalan Choice 1", validators=[DataRequired()])
     choice1_russian = StringField("Russian Choice 1", validators=[DataRequired()])
     choice2_japanese = StringField("Japanese Choice 2", validators=[DataRequired()])
@@ -38,7 +38,9 @@ class QuestionForm(FlaskForm):
     choice2_italian = StringField("Italian Choice 2", validators=[DataRequired()])
     choice2_dutch = StringField("Dutch Choice 2", validators=[DataRequired()])
     choice2_portuguese = StringField("Portuguese Choice 2", validators=[DataRequired()])
-    choice2_french_canada = StringField("French Canadian Choice 2", validators=[DataRequired()])
+    choice2_french_canada = StringField(
+        "French Canadian Choice 2", validators=[DataRequired()]
+    )
     choice2_catalan = StringField("Catalan Choice 2", validators=[DataRequired()])
     choice2_russian = StringField("Russian Choice 2", validators=[DataRequired()])
     worldwide = BooleanField("Worldwide Question")

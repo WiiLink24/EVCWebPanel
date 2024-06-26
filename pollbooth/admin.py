@@ -8,9 +8,11 @@ import config
 
 oidc = OpenIDConnect(app)
 
+
 @app.context_processor
 def inject_oidc():
     return dict(oidc=oidc)
+
 
 @app.route("/thepollbooth")
 @app.route("/thepollbooth/")
@@ -24,6 +26,7 @@ def login():
         return redirect(url_for("admin"))
 
     return render_template("login.html")
+
 
 @app.route("/thepollbooth/logout")
 @oidc.require_login

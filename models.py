@@ -2,8 +2,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 class Questions(db.Model):
-    question_id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
+    question_id = db.Column(
+        db.Integer, primary_key=True, unique=True, autoincrement=True
+    )
     content_japanese = db.Column(db.String)
     content_english = db.Column(db.String)
     content_german = db.Column(db.String)
@@ -40,4 +43,3 @@ class Questions(db.Model):
     worldwide = db.Column(db.Boolean)
     start_date = db.Column(db.BigInteger)
     end_date = db.Column(db.BigInteger)
-
