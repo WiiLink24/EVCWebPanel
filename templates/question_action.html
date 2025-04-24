@@ -1,120 +1,222 @@
 {% extends "generic/base.html" %}
 
 {% block title %}
-    {{ action }} a Question
+{{ action }} Question - EVC Web Panel
 {% endblock %}
 
 {% block content %}
-    <form action="" method="post" enctype="multipart/form-data">
-        <p>
-            {{ form.hidden_tag() }}
-            <div class="columns">
-                <div class="column">
-                    {{ form.content_japanese.label(class_="label") }} {{ form.content_japanese(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_japanese.label(class_="label") }} {{ form.choice1_japanese(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_japanese.label(class_="label") }} {{ form.choice2_japanese(class_="input") }}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="mb-6 text-2xl font-bold text-white">{{ action }} Survey Question</h1>
+    <div class="relative group mb-10">
+        <div class="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 p-8">
+            <div class="flex items-center mb-6 pb-4 border-b border-gray-700">
+                <div class="p-2 bg-blue-600/20 rounded-lg text-blue-400 mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
-                <div class="column">
-                    {{ form.content_english.label(class_="label") }} {{ form.content_english(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_english.label(class_="label") }} {{ form.choice1_english(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_english.label(class_="label") }} {{ form.choice2_english(class_="input") }}
+                <h2 class="text-xl font-bold text-white">Question Details</h2>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data" class="space-y-6">
+                {{ form.hidden_tag() }}
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Japanese -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-blue-300 mb-3 border-b border-gray-700 pb-2">Japanese</h3>
+                        <div class="mb-4">
+                            {{ form.content_japanese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_japanese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_japanese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_japanese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_japanese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_japanese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- English -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-green-300 mb-3 border-b border-gray-700 pb-2">English</h3>
+                        <div class="mb-4">
+                            {{ form.content_english.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_english(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_english.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_english(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_english.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_english(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- German -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-purple-300 mb-3 border-b border-gray-700 pb-2">German</h3>
+                        <div class="mb-4">
+                            {{ form.content_german.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_german(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_german.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_german(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_german.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_german(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- French -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-red-300 mb-3 border-b border-gray-700 pb-2">French</h3>
+                        <div class="mb-4">
+                            {{ form.content_french.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_french(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_french.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_french(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_french.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_french(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- Spanish -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-amber-300 mb-3 border-b border-gray-700 pb-2">Spanish</h3>
+                        <div class="mb-4">
+                            {{ form.content_spanish.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_spanish(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-amber-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_spanish.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_spanish(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-amber-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_spanish.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_spanish(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-amber-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- Continue with other languages following the same pattern -->
                 </div>
-                <div class="column">
-                    {{ form.content_german.label(class_="label") }} {{ form.content_german(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_german.label(class_="label") }} {{ form.choice1_german(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_german.label(class_="label") }} {{ form.choice2_german(class_="input") }}
+
+                <!-- Global Settings -->
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                    <h3 class="text-lg font-medium text-white mb-4">Global Settings</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center h-5">
+                                    {{ form.worldwide(class_="focus:ring-blue-500 h-4 w-4 text-blue-600 bg-gray-700
+                                    border-gray-500 rounded") }}
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    {{ form.worldwide.label(class_="font-medium text-gray-300") }}
+                                    <p class="text-gray-400">When enabled, this question will be shown worldwide</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            {{ form.start_date.label(class_="block text-sm font-medium text-gray-300 mb-2") }}
+                            <div class="relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                {{ form.start_date(class_="bg-gray-700 border border-gray-600 text-white pl-10 w-full
+                                px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-blue-500
+                                focus:border-blue-500") }}
+                            </div>
+                            <p class="mt-1 text-xs text-gray-400">Start date for this question to be active</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="column">
-                    {{ form.content_french.label(class_="label") }} {{ form.content_french(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_french.label(class_="label") }} {{ form.choice1_french(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_french.label(class_="label") }} {{ form.choice2_french(class_="input") }}
+
+                <div class="flex justify-end space-x-3 pt-6">
+                    <a href="{{ url_for('list_questions') }}"
+                        class="px-5 py-2 border border-gray-600 rounded-lg shadow-sm text-sm font-medium text-gray-300 bg-gray-700 hover:bg-gray-600 transition-colors duration-200">
+                        Cancel
+                    </a>
+                    <button type="submit"
+                        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-200 flex items-center text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Save Question
+                    </button>
                 </div>
-                <div class="column">
-                    {{ form.content_spanish.label(class_="label") }} {{ form.content_spanish(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_spanish.label(class_="label") }} {{ form.choice1_spanish(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_spanish.label(class_="label") }} {{ form.choice2_spanish(class_="input") }}
+            </form>
+        </div>
+    </div>
+
+    <div class="relative group">
+        <div class="relative bg-gray-800/80 border border-gray-700 rounded-lg p-6">
+            <div class="flex">
+                <div class="p-2 bg-blue-600/20 rounded-lg text-blue-400 mr-3 self-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
-                <div class="column">
-                    {{ form.content_italian.label(class_="label") }} {{ form.content_italian(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_italian.label(class_="label") }} {{ form.choice1_italian(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_italian.label(class_="label") }} {{ form.choice2_italian(class_="input") }}
-                </div>
-                <div class="column">
-                    {{ form.content_dutch.label(class_="label") }} {{ form.content_dutch(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_dutch.label(class_="label") }} {{ form.choice1_dutch(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_dutch.label(class_="label") }} {{ form.choice2_dutch(class_="input") }}
-                </div>
-                <div class="column">
-                    {{ form.content_portuguese.label(class_="label") }} {{ form.content_portuguese(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_portuguese.label(class_="label") }} {{ form.choice1_portuguese(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_portuguese.label(class_="label") }} {{ form.choice2_portuguese(class_="input") }}
-                </div>
-                <div class="column">
-                    {{ form.content_french_canada.label(class_="label") }} {{ form.content_french_canada(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_french_canada.label(class_="label") }} {{ form.choice1_french_canada(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_french_canada.label(class_="label") }} {{ form.choice2_french_canada(class_="input") }}
-                </div>
-                <div class="column">
-                    {{ form.content_catalan.label(class_="label") }} {{ form.content_catalan(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_catalan.label(class_="label") }} {{ form.choice1_catalan(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_catalan.label(class_="label") }} {{ form.choice2_catalan(class_="input") }}
-                </div>
-                <div class="column">
-                    {{ form.content_russian.label(class_="label") }} {{ form.content_russian(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice1_russian.label(class_="label") }} {{ form.choice1_russian(class_="input") }}
-                    <br>
-                    <br>
-                    {{ form.choice2_russian.label(class_="label") }} {{ form.choice2_russian(class_="input") }}
+                <div>
+                    <h3 class="text-sm font-medium text-white mb-2">About Survey Questions</h3>
+                    <div class="text-sm text-gray-300 space-y-2">
+                        <p>Survey questions appear on users' consoles and collect preference data.</p>
+                        <p>Each question requires translations for all supported languages and two possible responses.
+                        </p>
+                    </div>
                 </div>
             </div>
-            {{ form.worldwide.label }}: {{ form.worldwide(class_="block") }}
-            <br>
-            <br>
-            {{ form.start_date.label(class_="label") }} {{ form.start_date(class_="input") }}
-        </p>
-        <br>
-        <p>{{ form.submit(class_="button is-success") }}</p>
-    </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

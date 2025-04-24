@@ -24,6 +24,7 @@ def list_questions():
         # 4 questions can be active at a time, however inactive questions must exist for results.
         # TODO: Find good number for this dilemma
         type_max_count=100,
+        main=True
     )
 
 
@@ -82,10 +83,26 @@ def add_question():
     return render_template("question_action.html", form=form, action="Add")
 
 
-@app.route("/thepollbooth/questions/<question_id>/edit")
+@app.route("/thepollbooth/questions/<question_id>/edit", methods=["GET", "POST"])
 @oidc.require_login
 def edit_question(question_id: int):
-    pass
+    current_question = Questions.query.filter(Questions.question_id == question_id).first_or_404()
+    
+    form = QuestionForm(obj=current_question)
+    
+    if form.validate_on_submit():
+        form.populate_obj(current_question)
+        
+        # Calculate end_date based on worldwide status
+        if current_question.worldwide:
+            current_question.end_date = current_question.start_date + 1209600  # 2 weeks in seconds
+        else:
+            current_question.end_date = current_question.start_date + 604800   # 1 week in seconds
+        
+        db.session.commit()
+        return redirect(url_for("list_questions"))
+    
+    return render_template("question_action.html", form=form, action="Edit")
 
 
 @app.route("/thepollbooth//<question_id>/remove", methods=["GET", "POST"])
