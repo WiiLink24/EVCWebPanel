@@ -1,4 +1,4 @@
-from flask import url_for, render_template
+from flask import url_for, render_template, session
 from flask_oidc import OpenIDConnect
 from werkzeug.utils import redirect
 

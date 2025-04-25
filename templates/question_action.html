@@ -1,7 +1,7 @@
 {% extends "generic/base.html" %}
 
 {% block title %}
-{{ action }} Question - EVC Web Panel
+{{ action }} Question - The Pollbooth
 {% endblock %}
 
 {% block content %}
@@ -23,30 +23,14 @@
             <form action="" method="post" enctype="multipart/form-data" class="space-y-6">
                 {{ form.hidden_tag() }}
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    <!-- Japanese -->
-                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                        <h3 class="text-md font-semibold text-blue-300 mb-3 border-b border-gray-700 pb-2">Japanese</h3>
-                        <div class="mb-4">
-                            {{ form.content_japanese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
-                            {{ form.content_japanese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
-                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
-                            focus:border-transparent") }}
-                        </div>
-                        <div class="mb-4">
-                            {{ form.choice1_japanese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
-                            {{ form.choice1_japanese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
-                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
-                            focus:border-transparent") }}
-                        </div>
-                        <div>
-                            {{ form.choice2_japanese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
-                            {{ form.choice2_japanese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
-                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
-                            focus:border-transparent") }}
-                        </div>
-                    </div>
+                <!-- Question id -->
+                <div class="mb-4">
+                    {{ form.question_id.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                    {{ form.question_id(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white
+                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent") }}
+                </div>
 
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                     <!-- English -->
                     <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <h3 class="text-md font-semibold text-green-300 mb-3 border-b border-gray-700 pb-2">English</h3>
@@ -139,7 +123,102 @@
                         </div>
                     </div>
 
-                    <!-- Continue with other languages following the same pattern -->
+                    <!-- Portuguese -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-blue-300 mb-3 border-b border-gray-700 pb-2">Portuguese
+                        </h3>
+                        <div class="mb-4">
+                            {{ form.content_portuguese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_portuguese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_portuguese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_portuguese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_portuguese.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_portuguese(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- Italian -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-pink-300 mb-3 border-b border-gray-700 pb-2">Italian</h3>
+                        <div class="mb-4">
+                            {{ form.content_italian.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_italian(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-pink-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_italian.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_italian(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-pink-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_italian.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_italian(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-pink-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- Dutch -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-teal-300 mb-3 border-b border-gray-700 pb-2">Dutch</h3>
+                        <div class="mb-4">
+                            {{ form.content_dutch.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.content_dutch(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_dutch.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice1_dutch(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_dutch.label(class_="block text-sm font-medium text-gray-300 mb-1") }}
+                            {{ form.choice2_dutch(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
+
+                    <!-- French Canada -->
+                    <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                        <h3 class="text-md font-semibold text-orange-300 mb-3 border-b border-gray-700 pb-2">French
+                            Canada</h3>
+                        <div class="mb-4">
+                            {{ form.content_french_canada.label(class_="block text-sm font-medium text-gray-300 mb-1")
+                            }}
+                            {{ form.content_french_canada(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-orange-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.choice1_french_canada.label(class_="block text-sm font-medium text-gray-300 mb-1")
+                            }}
+                            {{ form.choice1_french_canada(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-orange-500
+                            focus:border-transparent") }}
+                        </div>
+                        <div>
+                            {{ form.choice2_french_canada.label(class_="block text-sm font-medium text-gray-300 mb-1")
+                            }}
+                            {{ form.choice2_french_canada(class_="w-full px-3 py-2 bg-gray-700 border border-gray-600
+                            rounded-md text-white focus:outline-none focus:ring-2 focus:ring-orange-500
+                            focus:border-transparent") }}
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Global Settings -->
@@ -147,21 +226,9 @@
                     <h3 class="text-lg font-medium text-white mb-4">Global Settings</h3>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Start Date -->
                         <div>
-                            <div class="flex items-center mb-4">
-                                <div class="flex items-center h-5">
-                                    {{ form.worldwide(class_="focus:ring-blue-500 h-4 w-4 text-blue-600 bg-gray-700
-                                    border-gray-500 rounded") }}
-                                </div>
-                                <div class="ml-3 text-sm">
-                                    {{ form.worldwide.label(class_="font-medium text-gray-300") }}
-                                    <p class="text-gray-400">When enabled, this question will be shown worldwide</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            {{ form.start_date.label(class_="block text-sm font-medium text-gray-300 mb-2") }}
+                            {{ form.date.label(class_="block text-sm font-medium text-gray-300 mb-2") }}
                             <div class="relative rounded-md shadow-sm">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
@@ -170,11 +237,43 @@
                                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                 </div>
-                                {{ form.start_date(class_="bg-gray-700 border border-gray-600 text-white pl-10 w-full
+                                {{ form.date(class_="bg-gray-700 border border-gray-600 text-white pl-10 w-full
                                 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-blue-500
                                 focus:border-blue-500") }}
                             </div>
                             <p class="mt-1 text-xs text-gray-400">Start date for this question to be active</p>
+                        </div>
+
+                        <!-- Category Dropdown -->
+                        <div>
+                            {{ form.category.label(class_="block text-sm font-medium text-gray-300 mb-2") }}
+                            <div class="relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                    </svg>
+                                </div>
+                                {{ form.category(class_="bg-gray-700 border border-gray-600 text-white pl-10 w-full px-4
+                                py-2 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500")
+                                }}
+                            </div>
+                            <p class="mt-1 text-xs text-gray-400">Select a category for this question (0 to 4).</p>
+                        </div>
+
+                        <!-- Worldwide Checkbox -->
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center h-5">
+                                    {{ form.type(class_="focus:ring-blue-500 h-4 w-4 text-blue-600 bg-gray-700
+                                    border-gray-500 rounded") }}
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    {{ form.type.label(class_="font-medium text-gray-300") }}
+                                    <p class="text-gray-400">When enabled, this question will be shown worldwide</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
