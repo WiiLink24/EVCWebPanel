@@ -8,7 +8,6 @@ from pollbooth.admin import oidc
 from pollbooth.utils.countries import languages, countries  # Import the data from countries.py
 
 @app.route("/thepollbooth/suggestions")
-@oidc.require_login
 def list_suggestions():
     page_num = request.args.get("page", default=1, type=int)
 

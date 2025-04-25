@@ -64,7 +64,7 @@
                 {% endif %}
                 {% endmacro %}
 
-                {% if g.oidc_user %}
+                {% if g.oidc_user.is_logged_in %}
                 {{ menu_item('Dashboard', 'login', 'house') }}
                 {{ menu_item('Questions', 'list_questions', 'circle-help') }}
                 {{ menu_item('Suggestions', 'list_suggestions', 'circle-plus') }}
@@ -73,6 +73,7 @@
                 {{ menu_item('Add Question', 'add_question', 'plus') }}
 
                 {% else %}
+                {{ menu_item('Suggestions', 'list_suggestions', 'circle-plus') }}
                 <div class="space-y-3 mt-8">
                     <a href="{{ url_for('admin') }}"
                         class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition duration-200 flex items-center">
