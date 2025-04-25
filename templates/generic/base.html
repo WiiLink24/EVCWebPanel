@@ -117,12 +117,14 @@
                 </div>
                 {% endif %}
 
+                {% if g.oidc_user.is_logged_in %}
                 <a href="{{ url_for('logout') }}"
                     class="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group mb-6">
                     <img src="/static/icon/log-out.svg" alt="Logout"
                         class="w-5 h-5 invert group-hover:-translate-x-1 transition-transform duration-200" />
                     <span>Logout</span>
                 </a>
+                {% else %}
 
                 <p class="text-sm text-gray-500">© 2025 WiiLink Team</p>
             </div>
