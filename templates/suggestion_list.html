@@ -31,11 +31,66 @@
         <div class="absolute rounded-lg blur opacity-10 group-hover:opacity-20 transition duration-200"></div>
         <div class="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700">
             <div class="flex items-center justify-between p-6 border-b border-gray-700">
-                <div class="flex items-center">
-                    <div class="p-2 bg-green-600/20 rounded-lg text-green-400 mr-3">
-                        <img src="/static/icon/circle-plus.svg" class="w-5 h-5 invert">
+                <div class="w-full flex items-center justify-between gap-4">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-green-600/20 rounded-lg text-green-400 mr-3">
+                            <img src="/static/icon/circle-plus.svg" class="w-5 h-5 invert">
+                        </div>
+                        <h2 class="text-xl font-bold text-white">Suggestions</h2>
                     </div>
-                    <h2 class="text-xl font-bold text-white">Suggestions</h2>
+
+                    <!-- Filter Dropdown -->
+                    <div class="relative inline-block text-left">
+                        <div>
+                            <button type="button" onclick="toggleFilterDropdown()"
+                                class="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-gray-300 shadow-sm hover:bg-gray-600">
+                                {% if active_filter == 'oldest' %}
+                                <img src="/static/icon/arrow-down-0-1.svg" class="w-4 h-4 mr-1 invert"></img>
+                                Oldest First
+                                {% elif active_filter == 'newest' %}
+                                <img src="/static/icon/arrow-down-1-0.svg" class="w-4 h-4 mr-1 invert"></img>
+                                Newest First
+                                {% elif active_filter == 'country' %}
+                                <img src="/static/icon/earth.svg" class="w-4 h-4 mr-1 invert"></img>
+                                By Country
+                                {% elif active_filter == 'language' %}
+                                <img src="/static/icon/languages.svg" class="w-4 h-4 mr-1 invert"></img>
+                                By Language
+                                {% endif %}
+                                <svg class="-mr-1 h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="filterDropdown"
+                            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+                            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                            <div class="py-1" role="none">
+                                <a href="{{ url_for('list_suggestions', filter='oldest') }}"
+                                    class="flex items-center m-2 mt-1 px-4 py-2 text-sm rounded-md {{ 'text-white bg-green-600' if active_filter == 'oldest' else 'text-gray-300 hover:bg-gray-600' }}">
+                                    <img src="/static/icon/arrow-down-0-1.svg" class="w-4 h-4 mr-2 invert"></img>
+                                    Oldest First
+                                </a>
+                                <a href="{{ url_for('list_suggestions', filter='newest') }}"
+                                    class="flex items-center m-2 px-4 py-2 text-sm rounded-md {{ 'text-white bg-green-600' if active_filter == 'newest' else 'text-gray-300 hover:bg-gray-600' }}">
+                                    <img src="/static/icon/arrow-down-1-0.svg" class="w-4 h-4 mr-2 invert"></img>
+                                    Newest First
+                                </a>
+                                <a href="{{ url_for('list_suggestions', filter='country') }}"
+                                    class="flex items-center m-2 px-4 py-2 text-sm rounded-md {{ 'text-white bg-green-600' if active_filter == 'country' else 'text-gray-300 hover:bg-gray-600' }}">
+                                    <img src="/static/icon/earth.svg" class="w-4 h-4 mr-2 invert"></img>
+                                    By Country
+                                </a>
+                                <a href="{{ url_for('list_suggestions', filter='language') }}"
+                                    class="flex items-center m-2 mb-1 px-4 py-2 text-sm rounded-md {{ 'text-white bg-green-600' if active_filter == 'language' else 'text-gray-300 hover:bg-gray-600' }}">
+                                    <img src="/static/icon/languages.svg" class="w-4 h-4 mr-2 invert"></img>
+                                    By Language
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="overflow-x-auto">
@@ -119,7 +174,7 @@
             <div class="p-6 border-t border-gray-700 flex justify-between items-center">
                 <div class="flex space-x-4">
                     {% if suggestions.has_prev %}
-                    <a href="{{ url_for('list_suggestions', page=suggestions.prev_num) }}"
+                    <a href="{{ url_for('list_suggestions', filter=active_filter, page=suggestions.prev_num) }}"
                         class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition duration-200 flex items-center text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -129,7 +184,7 @@
                     </a>
                     {% endif %}
                     {% if suggestions.has_next %}
-                    <a href="{{ url_for('list_suggestions', page=suggestions.next_num) }}"
+                    <a href="{{ url_for('list_suggestions', filter=active_filter, page=suggestions.next_num) }}"
                         class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition duration-200 flex items-center text-sm">
                         Next
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
@@ -139,8 +194,30 @@
                     </a>
                     {% endif %}
                 </div>
+                <div class="text-sm text-gray-400">
+                    Page {{ suggestions.page }} of {{ suggestions.pages }}
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function toggleFilterDropdown() {
+        const dropdown = document.getElementById('filterDropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+        const dropdown = document.getElementById('filterDropdown');
+        const button = event.target.closest('button');
+
+        if (!button || !button.hasAttribute('onclick') || button.getAttribute('onclick') !== 'toggleFilterDropdown()') {
+            if (!dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+            }
+        }
+    });
+</script>
 {% endblock %}

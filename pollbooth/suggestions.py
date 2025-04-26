@@ -8,12 +8,33 @@ from pollbooth.admin import oidc
 from pollbooth.utils.countries import languages, countries  # Import the data from countries.py
 
 @app.route("/thepollbooth/suggestions")
-def list_suggestions():
+@app.route("/thepollbooth/suggestions/<string:filter>")
+def list_suggestions(filter="oldest"):
     page_num = request.args.get("page", default=1, type=int)
-
-    suggestions = Suggestions.query.order_by(Suggestions.id.asc()).paginate(
-        page=page_num, per_page=100, error_out=False
-    )
+    
+    # Apply the appropriate filter
+    if filter == "oldest":
+        suggestions = Suggestions.query.order_by(Suggestions.id.asc()).paginate(
+            page=page_num, per_page=100, error_out=False
+        )
+    elif filter == "newest":
+        suggestions = Suggestions.query.order_by(Suggestions.id.desc()).paginate(
+            page=page_num, per_page=100, error_out=False
+        )
+    elif filter == "country":
+        suggestions = Suggestions.query.order_by(Suggestions.country_code.asc()).paginate(
+            page=page_num, per_page=100, error_out=False
+        )
+    elif filter == "language":
+        suggestions = Suggestions.query.order_by(Suggestions.language_code.asc()).paginate(
+            page=page_num, per_page=100, error_out=False
+        )
+    else:
+        # Default to oldest if an invalid filter is provided
+        filter = "oldest"
+        suggestions = Suggestions.query.order_by(Suggestions.id.asc()).paginate(
+            page=page_num, per_page=100, error_out=False
+        )
     
     # Process suggestions to add human-readable country, region, and language names
     processed_suggestions = []
@@ -28,7 +49,7 @@ def list_suggestions():
             country_data = countries[str(suggestion.country_code)]
             if "Subregions" in country_data and str(suggestion.region_code) in country_data["Subregions"]:
                 region_data = country_data["Subregions"][str(suggestion.region_code)]
-                region_name = region_data.get("en", "Unknown")  # Using English name
+                region_name = region_data.get("en", "Unknown")
         
         language_name = "Unknown"
         if 0 <= suggestion.language_code < len(languages):
@@ -46,7 +67,8 @@ def list_suggestions():
         suggestions=suggestions,
         type_length=suggestions.total,
         type_max_count=100,
-        main=True
+        main=True,
+        active_filter=filter  # Pass the active filter to the template
     )
 
 @app.route("/thepollbooth/suggestions/<int:suggestion_id>/remove", methods=["GET", "POST"])
