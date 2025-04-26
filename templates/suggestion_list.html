@@ -58,7 +58,7 @@
                                 class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                                 Choice 2
                             </th>
-                            {% if g.oidc_user.is_logged_in %}
+                            {% if g.oidc_user.logged_in %}
                             <th scope="col"
                                 class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                                 Actions
@@ -96,7 +96,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                                 {{ suggestion.choice2 }}
                             </td>
-                            {% if g.oidc_user.is_logged_in %}
+                            {% if g.oidc_user.logged_in %}
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
                                 <div class="flex space-x-2">
                                     <a href="{{ url_for('remove_suggestion', suggestion_id=suggestion.id) }}"

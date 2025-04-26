@@ -64,7 +64,7 @@
                 {% endif %}
                 {% endmacro %}
 
-                {% if g.oidc_user.is_logged_in %}
+                {% if g.oidc_user.logged_in %}
                 {{ menu_item('Dashboard', 'login', 'house') }}
                 {{ menu_item('Questions', 'list_questions', 'circle-help') }}
                 {{ menu_item('Suggestions', 'list_suggestions', 'circle-plus') }}
@@ -117,7 +117,7 @@
                 </div>
                 {% endif %}
 
-                {% if g.oidc_user.is_logged_in %}
+                {% if g.oidc_user.logged_in %}
                 <a href="{{ url_for('logout') }}"
                     class="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group mb-6">
                     <img src="/static/icon/log-out.svg" alt="Logout"
