@@ -34,7 +34,7 @@ def add_question():
     form = QuestionForm()
     if form.validate_on_submit():
         new_question = Questions(
-            content_japanese=form.content_japanese.data,
+            question_id=form.question_id.data,
             content_english=form.content_english.data,
             content_german=form.content_german.data,
             content_french=form.content_french.data,
@@ -43,9 +43,6 @@ def add_question():
             content_dutch=form.content_dutch.data,
             content_portuguese=form.content_portuguese.data,
             content_french_canada=form.content_french_canada.data,
-            content_catalan=form.content_catalan.data,
-            content_russian=form.content_russian.data,
-            choice1_japanese=form.choice1_japanese.data,
             choice1_english=form.choice1_english.data,
             choice1_german=form.choice1_german.data,
             choice1_french=form.choice1_french.data,
@@ -54,9 +51,6 @@ def add_question():
             choice1_dutch=form.choice1_dutch.data,
             choice1_portuguese=form.choice1_portuguese.data,
             choice1_french_canada=form.choice1_french_canada.data,
-            choice1_catalan=form.choice1_catalan.data,
-            choice1_russian=form.choice1_russian.data,
-            choice2_japanese=form.choice2_japanese.data,
             choice2_english=form.choice2_english.data,
             choice2_german=form.choice2_german.data,
             choice2_french=form.choice2_french.data,
@@ -65,15 +59,10 @@ def add_question():
             choice2_dutch=form.choice2_dutch.data,
             choice2_portuguese=form.choice2_portuguese.data,
             choice2_french_canada=form.choice2_french_canada.data,
-            choice2_catalan=form.choice2_catalan.data,
-            choice2_russian=form.choice2_russian.data,
-            worldwide=form.worldwide.data,
-            start_date=form.start_date.data,
-            end_date=form.start_date.data + 604800,
+            type="w" if form.type.data else "n",  # Map checkbox to "w" or "n"
+            date=form.date.data,
+            category=form.category.data,
         )
-
-        if new_question.worldwide:
-            new_question.end_date += 604800
 
         db.session.add(new_question)
         db.session.commit()
@@ -91,14 +80,34 @@ def edit_question(question_id: int):
     form = QuestionForm(obj=current_question)
     
     if form.validate_on_submit():
-        form.populate_obj(current_question)
-        
-        # Calculate end_date based on worldwide status
-        if current_question.worldwide:
-            current_question.end_date = current_question.start_date + 1209600  # 2 weeks in seconds
-        else:
-            current_question.end_date = current_question.start_date + 604800   # 1 week in seconds
-        
+        current_question.content_english = form.content_english.data
+        current_question.content_german = form.content_german.data
+        current_question.content_french = form.content_french.data
+        current_question.content_spanish = form.content_spanish.data
+        current_question.content_italian = form.content_italian.data
+        current_question.content_dutch = form.content_dutch.data
+        current_question.content_portuguese = form.content_portuguese.data
+        current_question.content_french_canada = form.content_french_canada.data
+        current_question.choice1_english = form.choice1_english.data
+        current_question.choice1_german = form.choice1_german.data
+        current_question.choice1_french = form.choice1_french.data
+        current_question.choice1_spanish = form.choice1_spanish.data
+        current_question.choice1_italian = form.choice1_italian.data
+        current_question.choice1_dutch = form.choice1_dutch.data
+        current_question.choice1_portuguese = form.choice1_portuguese.data
+        current_question.choice1_french_canada = form.choice1_french_canada.data
+        current_question.choice2_english = form.choice2_english.data
+        current_question.choice2_german = form.choice2_german.data
+        current_question.choice2_french = form.choice2_french.data
+        current_question.choice2_spanish = form.choice2_spanish.data
+        current_question.choice2_italian = form.choice2_italian.data
+        current_question.choice2_dutch = form.choice2_dutch.data
+        current_question.choice2_portuguese = form.choice2_portuguese.data
+        current_question.choice2_french_canada = form.choice2_french_canada.data
+        current_question.type = "w" if form.type.data else "n"
+        current_question.date = form.date.data
+        current_question.category = form.category.data
+
         db.session.commit()
         return redirect(url_for("list_questions"))
     

@@ -8,7 +8,7 @@ def manage_delete_item(item_id: int, type_name: str, callback) -> str:
     if form.validate_on_submit():
         # This is quite easily circumvented.
         # However, all we need is for the user to pay attention.
-        if form.given_id.data == item_id:
+        if int(form.given_id.data) == int(item_id):
             return callback()
         else:
             flash(f"Incorrect {type_name}!")

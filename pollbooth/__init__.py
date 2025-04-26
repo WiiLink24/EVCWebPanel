@@ -1,1 +1,1 @@
-from . import admin, questions
+from . import admin, questions, suggestions

@@ -1,7 +1,7 @@
 {% extends "generic/base.html" %}
 
 {% block title %}
-    Delete {{ type_name | title }} - EVC Web Panel
+    Delete {{ type_name | title }} - The Pollbooth
 {% endblock %}
 
 {% block content %}
@@ -86,7 +86,6 @@
                         <ul class="list-disc pl-5 mt-2 space-y-1">
                             <li>The {{ type_name }} is permanently removed from the database</li>
                             <li>This action cannot be undone without restoring from a backup</li>
-                            <li>Dependent services may be affected by this deletion</li>
                         </ul>
                     </div>
                 </div>
