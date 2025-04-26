@@ -1,9 +1,10 @@
 languages = [
+    '🇯🇵 Japanese',
     '🇬🇧 English',
-    '🇫🇷 French',
     '🇩🇪 German',
-    '🇮🇹 Italian',
+    '🇫🇷 French',
     '🇪🇸 Spanish',
+    '🇮🇹 Italian',
     '🇳🇱 Dutch',
     '🇵🇹 Portuguese',
     '🇨🇦 French (Canada)'
